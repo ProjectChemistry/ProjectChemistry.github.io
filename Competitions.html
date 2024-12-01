@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitions</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and background styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: #24292f; /* Dark background like GitHub */
+            color: #ffffff; /* White text for contrast */
+            height: 100vh;
+            transition: margin-left 0.3s ease; /* Smooth transition for side menu */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Hamburger menu styling */
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 35px; /* Increased width for proper spacing */
+            height: 30px; /* Increased height for proper spacing */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1001; /* Keep the hamburger on top */
+            padding: 5px;
+            border-radius: 5px; /* Optional rounded corners */
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 5px;
+            background-color: #fff; /* Initial color is white */
+            transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+        }
+
+        /* Side navigation menu */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Initially hidden off-screen */
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            transition: left 0.3s ease; /* Smooth transition for side menu */
+            padding-top: 60px;
+            z-index: 999; /* Ensure the side menu is above the content */
+        }
+
+        /* Add white background for the side menu when opened */
+        .side-nav.open {
+            background-color: #fff; /* White background */
+        }
+
+        .side-nav a {
+            display: block;
+            color: #000; /* Text color becomes black in white background */
+            padding: 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background-color 0.2s;
+        }
+
+        .side-nav a:hover {
+            background-color: #575757;
+        }
+
+        /* Home icon and text */
+        .home-icon {
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .home-icon i {
+            margin-right: 10px;
+            font-size: 1.8em;
+            color: black;
+        }
+
+        /* Container for the main content */
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 60px;
+            z-index: 1;
+        }
+
+        .box {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%; /* Ensure the boxes take the full width available */
+        }
+
+        .box h1 {
+            font-size: 4em;
+            margin-bottom: 15px;
+            color: #24292f;
+        }
+
+        .box h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #24292f;
+        }
+
+        .box p {
+            font-size: 1.5em;
+            color: #586069;
+        }
+
+        #registration {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #registration:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Home Link (in the side-nav) */
+        .side-nav a.home-link {
+            color: #000;
+        }
+
+        /* Menu Open Animation */
+        .menu-icon.open div:nth-child(1) {
+            transform: rotate(45deg);
+            position: relative;
+            top: 8px;
+            background-color: #000; /* Turns to black */
+        }
+
+        .menu-icon.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.open div:nth-child(3) {
+            transform: rotate(-45deg);
+            position: relative;
+            top: -8px;
+            background-color: #000; /* Turns to black */
+        }
+
+        /* Ensure content area is correctly aligned */
+        .main-content {
+            transition: margin-left 0.3s ease;
+            margin-left: 0;
+        }
+
+        .main-content.shifted {
+            margin-left: 250px; /* Shift the content when side-nav is open */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger menu -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Side navigation -->
+    <div class="side-nav" id="side-nav">
+        <a href="index.html" class="home-link">
+            <div class="home-icon">
+                <i class="fa fa-home"></i> Home
+            </div>
+        </a>
+        <!-- Additional links can go here if needed -->
+    </div>
+
+    <!-- Main content container -->
+    <div class="main-content">
+        <!-- Main content -->
+        <div class="container">
+            <div class="box">
+                <h1>Competitions:</h1>
+            </div>
+
+            <div class="box">
+                <h2>Rules</h2>
+                <p>Understand the guidelines for participating in our competitions.</p>
+            </div>
+
+            <div class="box">
+                <h2>Study Guide</h2>
+                <p>Prepare with our comprehensive study materials and resources.</p>
+            </div>
+
+            <div class="box" id="registration">
+                <h2>Registration</h2>
+                <p>Sign up to participate in our exciting chemistry competitions!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Redirect to registration page when clicking the last box -->
+    <script>
+        document.getElementById('registration').addEventListener('click', function() {
+            window.location.href = 'registration.html'; // Redirect to registration page
+        });
+
+        // Function to toggle the side navigation menu
+        function toggleMenu() {
+            const sideNav = document.getElementById('side-nav');
+            const body = document.body;
+            const menuIcon = document.querySelector('.menu-icon');
+            const mainContent = document.querySelector('.main-content');
+
+            // Toggle the side navigation visibility
+            if (sideNav.style.left === '-250px' || sideNav.style.left === "") {
+                sideNav.style.left = '0'; // Show the menu
+                mainContent.classList.add('shifted'); // Shift content to the right
+                menuIcon.classList.add('open'); // Animate the hamburger icon
+                sideNav.classList.add('open'); // Add the white background to the side-nav
+            } else {
+                sideNav.style.left = '-250px'; // Hide the menu
+                mainContent.classList.remove('shifted'); // Reset content margin
+                menuIcon.classList.remove('open'); // Reset hamburger icon
+                sideNav.classList.remove('open'); // Remove the white background from the side-nav
+            }
+        }
+    </script>
+
+    <!-- Font Awesome for the house icon (if needed) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
